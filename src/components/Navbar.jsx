@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Tilt } from "react-tilt";
 import { AuthContext } from "../context/AuthContext";
@@ -21,6 +21,8 @@ const navigation = [
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const Navigate = useNavigate()
+  const handleOpen = () =>currentUser?  setOpen((cur) => !cur): Navigate("/login");
 
   return (
     <div className="bg-white">
@@ -65,7 +67,7 @@ const Navbar = () => {
               <Tilt>
                 <button className="text-sm font-semibold leading-6 text-white border p-2 bg-black rounded-xl flex relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 w-24 -z-10"></div>
-                 {currentUser ?< span className="mx-2" onClick={() => signOut(auth)}>Logout</span>: < span className="mx-2">Login</span>}
+                 {currentUser ?< span className="mx-2" onClick={() => signOut(auth)}>Logout</span>: < span className="mx-2" onClick={handleOpen}>Login</span>}
                   <span aria-hidden="true">&rarr;</span>
                 </button>
               </Tilt>
@@ -111,6 +113,7 @@ const Navbar = () => {
                   <div
                     href="#"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    onClick={handleOpen}
                   >
                     Log in
                   </div>

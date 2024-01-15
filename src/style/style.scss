@@ -4,7 +4,7 @@
   }
   .formContainer {
     height: 100vh;
-    background: #19376D;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,8 @@
       text-align: center;
       gap: 12px;
       z-index: 0;
+      border: 1px solid gray;
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
       border-radius: 12px;
       .logo {
         font-weight: bold;

@@ -84,24 +84,24 @@ const Register = () => {
   return (
     <div className='formContainer'>
       <div className="formWrapper">
-        <span className="logo">College Seva</span>
+        <span className="logo">CollegeCruX</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Name' />
           <input type="email" placeholder='Email' />
           <input type="password" placeholder='Password' />
           <input type="file" id='file' />
-          <label htmlFor="file" style={{ display: 'flex', alignItems: 'center', gap: '5px' }} >
+          {/* <label htmlFor="file" style={{ display: 'flex', alignItems: 'center', gap: '5px' }} >
             <span style={{ fontSize: '14px', color: '#4F3B78', paddingLeft: '5px' }}>Add an Avatar !
-            </span></label>
+            </span></label> */}
 
-          <label style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'gray' }}>
+          {/* <label style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'gray' }}>
             Join as volunteer?
             <input
               type="checkbox"
 
             />
-          </label>
+          </label> */}
 
 
 

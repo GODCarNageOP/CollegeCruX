@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className='formContainer'>
       <div className="formWrapper">
-        <span className="logo">College Seva</span>
+        <span className="logo">CollegeCruX</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit} >
 
