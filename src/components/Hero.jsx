@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Tilt } from "react-tilt";
 import Modal from "../constants/Modal";
-import { ProtectedRoute } from "../App";
+import { Button } from "@material-tailwind/react";
 
 const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
   return (
@@ -28,25 +28,20 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
           </h1>
 
           <div className=" flex items-center justify-center gap-x-10">
-            <Link>
+            {/* <Link>
               <Tilt>
                 <div className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-lg relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 w-28 -z-10"></div>
                   Get started
                 </div>
               </Tilt>
-            </Link>
+            </Link> */}
             
             <Modal setEmail={setEmail} setPercentile={setPercentile} setName={setName}
             handleService={handleService}/>
            
             <Link to="/aboutus">
-              <Tilt>
-                <div className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-lg relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 w-28 -z-10"></div>
-                  Learn more
-                </div>
-              </Tilt>
+            <Button>Learn More</Button>
             </Link>
           </div>
         </div>
