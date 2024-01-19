@@ -7,16 +7,31 @@ import { Tilt } from "react-tilt";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import Swal from 'sweetalert2'
 
 const navigation = [
   { name: "Home", link: "/" },
   { name: "Top College", link: "/topcolleges" },
   { name: "Top University", link: "/topuniversities" },
   { name: "Admission", link: "/admission" },
-  { name: "About", link: "/aboutus" },
+  // { name: "About", link: "/aboutus" },
   { name: "Contact", link: "/contact" },
   // { name: '', href: '#' },
 ];
+
+const handleSignOut = async () => {
+  await signOut(auth);
+  showLogout()
+};
+
+function showLogout() {
+  Swal.fire({
+    title: "Succesfully Logged Out",
+    text: '',
+    icon: 'info',
+    confirmButtonText: 'Okay'
+  })
+}
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -36,7 +51,9 @@ const Navbar = () => {
               <Link to="/">
               <div className="absolute bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 w-10 -z-10"></div>
                 <span className="sr-only">Your Company</span>
+                <Tilt>
                 <img className="h-20 w-auto relative group" src={logo} alt="" />
+                </Tilt>
               </Link>
             </div>
           </div>
@@ -67,7 +84,7 @@ const Navbar = () => {
               <Tilt>
                 <button className="text-sm font-semibold leading-6 text-white border p-2 bg-black rounded-xl flex relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 w-24 -z-10"></div>
-                 {currentUser ?< span className="mx-2" onClick={() => signOut(auth)}>Logout</span>: < span className="mx-2" onClick={handleOpen}>Login</span>}
+                 {currentUser ?< span className="mx-2" onClick={handleSignOut}>Logout</span>: < span className="mx-2" onClick={handleOpen}>Login</span>}
                   <span aria-hidden="true">&rarr;</span>
                 </button>
               </Tilt>
@@ -100,18 +117,18 @@ const Navbar = () => {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      {item.name}
-                    </a>
+                  <Link to={item.link}>
+                  <div
+                    key={item.name}
+                    className="text-lg font-semibold leading-6 text-gray-900 uppercase"
+                  >
+                    {item.name}
+                  </div>
+                </Link>
                   ))}
                 </div>
                 <div className="py-6">
                   <div
-                    href="#"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     onClick={handleOpen}
                   >

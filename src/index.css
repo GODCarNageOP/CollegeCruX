@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Fraunces', serif;
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 
 .cellWithOwnership {

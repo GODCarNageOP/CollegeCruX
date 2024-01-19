@@ -8,12 +8,12 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
   return (
     <div>
       <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+        <div className=" sm:mb-8 sm:flex sm:justify-center">
           <div className="relative rounded-full px-3 py-2 text-lg leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-600 h-10 w-full flex gap-3 shadow-lg hover:scale-105 hover:shadow-xl">
             <div className="ml-3 flex flex-1">
-            Join the Elite Ranks at Mumbai Eng College: Ignite Your Dreams in the City of Opportunities!
+            Join the Elite Ranks at Mumbai Eng College <span className="hidden md:inline lg:inline">: Ignite Your Dreams in the City of Opportunities!</span>
             </div>{" "}
-            <Link>
+            <Link to="/register">
               <div className="font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 inline-block text-transparent bg-clip-text">
                 <span className="absolute inset-0" aria-hidden="true" />
                 Register <span aria-hidden="true">&rarr;</span>
@@ -22,8 +22,8 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
           </div>
         </div>
         <div className="text-center flex items-center justify-center flex-col">
-          <h1 className="text-2xl tracking-tight sm:text-6xl bg-gradient-to-r from-cyan-300 to-blue-600 inline-block text-transparent bg-clip-text md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] font-semibold h-56">
-            "Unlock Your Potential, Embrace Your Future: Your Journey Starts
+          <h1 className="mx-5 pt-10 lg:pt-0 lg:mx-0 text-2xl tracking-tight sm:text-6xl bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] font-semibold h-56">
+            "Unlock Your Potential & Embrace Your Future: Your Journey Starts
             Here!"
           </h1>
 
@@ -37,12 +37,16 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
               </Tilt>
             </Link> */}
             
+            <Tilt>
             <Modal setEmail={setEmail} setPercentile={setPercentile} setName={setName}
             handleService={handleService}/>
+            </Tilt>
            
+            <Tilt>
             <Link to="/aboutus">
-            <Button>Learn More</Button>
+            <Button className="">Learn More</Button>
             </Link>
+            </Tilt>
           </div>
         </div>
       </div>

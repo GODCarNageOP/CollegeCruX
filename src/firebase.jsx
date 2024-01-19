@@ -2,17 +2,17 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
-    apiKey: "AIzaSyDEOVk-iUuANJR9PN0Ypw7WarYyJoWEBuw",
-    authDomain: "hackathon-agos-wasp.firebaseapp.com",
-    projectId: "hackathon-agos-wasp",
-    storageBucket: "hackathon-agos-wasp.appspot.com",
-    messagingSenderId: "640893879867",
-    appId: "1:640893879867:web:5d112d8cbefd7aac35fe1e"
+  apiKey: "AIzaSyBVLeDKbWp5wHD2qsFJCGXpT6g2FjcWHs0",
+  authDomain: "admin-dashboard-9e878.firebaseapp.com",
+  projectId: "admin-dashboard-9e878",
+  storageBucket: "admin-dashboard-9e878.appspot.com",
+  messagingSenderId: "1057203911933",
+  appId: "1:1057203911933:web:aac5cf2c833c2e13369294",
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth()
-export const storage = getStorage()
-export const db = getFirestore()
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
+export const db = getFirestore(app);
+export const storage = getStorage(app);

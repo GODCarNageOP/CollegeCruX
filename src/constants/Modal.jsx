@@ -15,20 +15,19 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 
-
 export default function Modal({setEmail,setName,setPercentile,handleService}) {
     const Navigate = useNavigate()
     const { currentUser } = useContext(AuthContext);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () =>currentUser?  setOpen((cur) => !cur): Navigate("/login");
-    currentUser
+    const [active, setActive] = useState(false)
 
     return (
         <React.Fragment>
         
-            <Button onClick={handleOpen}>Get Started</Button>
+            <Button onClick={handleOpen} className="">Get Started</Button>
             <Dialog
-                size="xs"
+                size="xl"
                 open={open}
                 handler={handleOpen}
                 className="bg-transparent shadow-none"
@@ -40,19 +39,19 @@ export default function Modal({setEmail,setName,setPercentile,handleService}) {
                         className="mb-4 grid h-28 place-items-center"
                     >
                         <Typography variant="h3" color="white">
-                            CollegeCrux
+                            CollegeCruX
                         </Typography>
                     </CardHeader>
                     <CardBody className="flex flex-col gap-4">
-                        <Input label="Student Name" onChange={(e) => setName(e.target.value)} size="lg" />
-                        <Input label="Email" onChange={(e) => setEmail(e.target.value)} size="lg" />
-                        <Input label="Enter Your Percentile" onChange={(e) => setPercentile(e.target.value)} size="lg" />
+                        <Input label="Student Name" required autoComplete="name" type="text" onChange={(e) => setName(e.target.value)} size="lg" />
+                        <Input label="Email" required autoComplete="email" type="email" onChange={(e) => setEmail(e.target.value)} size="lg" />
+                        <Input label="Enter Your Percentile" required type="text" onChange={(e) => setPercentile(e.target.value)} size="lg" />
                         <div className="-ml-2.5">
-                            <Checkbox label="Remember Me" />
+                            <Checkbox label="Agree to our privacy policy." checked={active} onChange={setActive}/>
                         </div>
                     </CardBody>
                     <CardFooter className="pt-0">
-                        <Button variant="gradient" onClick={handleService} fullWidth>
+                        <Button variant="gradient" onClick={handleService} fullWidth disabled={!active}>
                             Submit
                         </Button>
                         {/* <Typography variant="small" className="mt-6 flex justify-center">

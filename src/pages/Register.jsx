@@ -1,120 +1,151 @@
-import React, { useState } from 'react'
-//import Add from '../img/gallary.png'
-
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db, storage } from '../firebase'
+import logo from "../../src/assets/logo.png";
+import { useContext, useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import "../style/style.scss"
+import Swal from "sweetalert2";
+import { Input } from "@material-tailwind/react";
 
-const Register = () => {
+export default function Login() {
+  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const [err, setErr] = useState(false)
-  const [loading, setLoading] = useState(false)
 
-  // const [isChecked, setIsChecked] = useState(false);
-
-  // const handleCheckboxChange = (event) => {
-  //   setIsChecked(event.target.checked);
-  // };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const name = e.target[0].value;
-    const email = e.target[1].value;
-    const password = e.target[2].value;
-    const file = e.target[3].files[0];
-    const ischeck = e.target[4].checked
-    console.log(ischeck);
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
     try {
-      //Create user
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-
-      //Create a unique image name
-      const date = new Date().getTime();
-      const storageRef = ref(storage, `${name + date}`);
-
-      await uploadBytesResumable(storageRef, file).then(() => {
-        getDownloadURL(storageRef).then(async (downloadURL) => {
-          try {
-            //Update profile
-            await updateProfile(res.user, {
-              displayName: name,
-              photoURL: downloadURL,
-
-            });
-
-            //create user on firestore
-            await setDoc(doc(db, "users", res.user.uid), {
-              uid: res.user.uid,
-              displayName: name,
-              isVolunteer: ischeck,
-              email,
-              photoURL: downloadURL,
-            });
-
-            //create empty user chats on firestore
-            await setDoc(doc(db, "userChats", res.user.uid), {});
-            navigate("/");
-
-            // ischeck && await setDoc(doc(db, "services", res.user.uid), {});
-            navigate("/");
-
-          } catch (err) {
-            console.log(err);
-            setErr(true);
-            setLoading(false);
-          }
-        });
-      });
-
-    } catch (err) {
-      setErr(true);
-      setLoading(false);
+      await signInWithEmailAndPassword(auth, email, password);
+      showSuccess();
+      // Successfully signed in, navigate to the desired page
+      navigate("/");
+    } catch (error) {
+      // Handle authentication errors here
+      setError(true);
+      console.error(error);
+      showAlert(error.message);
     }
   };
 
+  function showAlert(errorMessage) {
+    Swal.fire({
+      title: errorMessage,
+      text: "Please try again!",
+      icon: "error",
+      confirmButtonText: "Okay",
+    });
+  }
 
-
+  function showSuccess() {
+    Swal.fire({
+      title: "Succesfully Logged in",
+      text: "",
+      icon: "success",
+      confirmButtonText: "Okay",
+    });
+  }
 
   return (
-    <div className='formContainer'>
-      <div className="formWrapper">
-        <span className="logo">CollegeCruX</span>
-        <span className="title">Register</span>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder='Name' />
-          <input type="email" placeholder='Email' />
-          <input type="password" placeholder='Password' />
-          <input type="file" id='file' />
-          {/* <label htmlFor="file" style={{ display: 'flex', alignItems: 'center', gap: '5px' }} >
-            <span style={{ fontSize: '14px', color: '#4F3B78', paddingLeft: '5px' }}>Add an Avatar !
-            </span></label> */}
+    <>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img className="mx-auto w-32 h-32" src={logo} alt="Your Company" />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            CollegeCruX
+          </h2>
+        </div>
 
-          {/* <label style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'gray' }}>
-            Join as volunteer?
-            <input
-              type="checkbox"
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleLogin}
+          >
+            <div>
+              <div className="mt-2">
+                <Input
+                  label="Student Name"
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
 
-            />
-          </label> */}
+            <div>
+              <div className="mt-2">
+                <Input
+                  label="Email Address"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
 
+            <div>
+              <div className="flex items-center justify-between"></div>
+              <div className="mt-2">
+                <Input
+                  label="Password"
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
 
+            <div>
+              <div className="mt-2">
+                <Input
+                  label="Contact No."
+                  id="contact"
+                  name="contact"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
 
+            <div>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in
+              </button>
+              {error && <span className="text-red-500 font-normal"></span>}
+            </div>
+          </form>
 
-          <button>Sign Up</button>
-          {loading && "Uploading and compressing the image please wait..."}
-          {err && <span>Something went wrong !</span>}
-        </form>
-        <p>Do have an account ? <Link to='/login'>Login</Link></p>
+          <p className="mt-10 text-center text-sm text-gray-500">
+            Alrady a member ?{" "}
+            <Link to="/login">
+              <a className="font-semibold leading-6 text-blue-500 hover:text-indigo-500">
+                Login
+              </a>
+            </Link>
+          </p>
+        </div>
       </div>
-
-    </div>
-  )
+    </>
+  );
 }
-
-export default Register
