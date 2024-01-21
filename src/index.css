@@ -33,3 +33,9 @@ body::-webkit-scrollbar{
   background-color: rgba(225, 0, 0, 0.05);
   color: red;
 }
+
+.flowchart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

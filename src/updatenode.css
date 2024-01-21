@@ -19,4 +19,30 @@
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 768px){
+  .react-flow__nodes{
+    display: flex;
+    margin-left: -70px;
+  }
+
+  .react-flow__edges{
+    display: flex;
+    margin-left: -70px;
+  }
+}
+
+/* @media (min-width: 769px) and (max-width: 1024px) {
+  .react-flow__nodes{
+    display: flex;
+    margin-left: 0px;
+  }
+
+  .react-flow__edges{
+    display: flex;
+    margin-left: 0px;
+  }
+} */
+
+
   

@@ -8,10 +8,10 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
   return (
     <div>
       <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-        <div className=" sm:mb-8 sm:flex sm:justify-center">
+        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
           <div className="relative rounded-full px-3 py-2 text-lg leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-600 h-10 w-full flex gap-3 shadow-lg hover:scale-105 hover:shadow-xl">
             <div className="ml-3 flex flex-1">
-            Join the Elite Ranks at Mumbai Eng College <span className="hidden md:inline lg:inline">: Ignite Your Dreams in the City of Opportunities!</span>
+            Join the Elite Ranks at Engineering Colleges <span className="hidden lg:inline">: Ignite Your Dreams in the City of Opportunities!</span>
             </div>{" "}
             <Link to="/register">
               <div className="font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 inline-block text-transparent bg-clip-text">
