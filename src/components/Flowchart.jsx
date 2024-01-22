@@ -146,7 +146,7 @@ const Flowchart = () => {
   }, [nodeHidden, setNodes, setEdges]);
 
   return (
-    <div className="lg:w-[50%] w-[90%] lg:h-[1284px] h-[1400px]">
+    <div className="lg:w-[40%] w-[70%] md:w-[55%] lg:h-[1284px] h-[1400px]">
     <ReactFlow
       nodes={nodes}
       edges={edges}

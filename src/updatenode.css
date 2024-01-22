@@ -23,12 +23,12 @@
   @media (max-width: 768px){
   .react-flow__nodes{
     display: flex;
-    margin-left: -70px;
+    margin-left: -85px;
   }
 
   .react-flow__edges{
     display: flex;
-    margin-left: -70px;
+    margin-left: -85px;
   }
 }
 

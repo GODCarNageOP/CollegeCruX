@@ -3,7 +3,7 @@ import DataTable from '../components/CollegeDatatable'
 
 const TopColleges = () => {
   return (
-    <div className='mt-12 h-full mx-10'>
+    <div className='mt-12 h-full mx-5'>
       <DataTable/>
     </div>
   )
