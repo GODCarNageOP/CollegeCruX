@@ -47,7 +47,7 @@ export default function Modal({setEmail,setName,setPercentile,handleService}) {
                         <Input label="Email" required autoComplete="email" type="email" onChange={(e) => setEmail(e.target.value)} size="lg" />
                         <Input label="Enter Your Percentile" required type="text" onChange={(e) => setPercentile(e.target.value)} size="lg" />
                         <div className="-ml-2.5">
-                            <Checkbox label="Agree to our privacy policy." checked={active} onChange={setActive}/>
+                            <Checkbox label={<>Agree to our <span className="text-blue-600 cursor-pointer underline underline-offset-1">privacy policy.</span></>} checked={active} onChange={setActive}/>
                         </div>
                     </CardBody>
                     <CardFooter className="pt-0">
