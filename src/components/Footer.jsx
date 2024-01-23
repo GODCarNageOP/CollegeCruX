@@ -82,7 +82,7 @@ const Footer = () => {
             <Tilt>
               <Typography
                 as="a"
-                href=""
+                href="tel:8104799731"
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
                 <FiPhone size={20} />
@@ -91,7 +91,7 @@ const Footer = () => {
             <Tilt>
               <Typography
                 as="a"
-                href=""
+                href="mailto:1032201286@tcetmumbai.in"
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
                 <LuMail size={20} />
@@ -100,7 +100,7 @@ const Footer = () => {
             <Tilt>
               <Typography
                 as="a"
-                href=""
+                href="https://yash-portfolio-six.vercel.app"
                 className="opacity-80 transition-opacity hover:opacity-100"
               >
                 <SlGlobe size={20} />

@@ -63,18 +63,22 @@ const Hero = ({ setEmail, setName, setPercentile, handleService }) => {
             </Link> */}
 
             <Tilt>
+              <span className="z-0">
               <Modal
                 setEmail={setEmail}
                 setPercentile={setPercentile}
                 setName={setName}
                 handleService={handleService}
               />
+              </span>
             </Tilt>
 
             <Tilt>
+            <span className="z-0">
               <Link to="/aboutus">
                 <Button className="">Learn More</Button>
               </Link>
+              </span>
             </Tilt>
           </div>
         </div>

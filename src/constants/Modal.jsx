@@ -30,7 +30,7 @@ export default function Modal({setEmail,setName,setPercentile,handleService}) {
                 size="xl"
                 open={open}
                 handler={handleOpen}
-                className="bg-transparent shadow-none"
+                className="bg-transparent shadow-none z-10"
             >
                 <Card className="mx-auto w-full max-w-[24rem]">
                     <CardHeader
