@@ -33,7 +33,9 @@ export default function Even() {
   // ];
   return (
     <div className="datatable h-[80%] p-2 mx-2 md:mx-5 lg:mx-20">
-      <div className="datatableTitle w-[100%] mb-10 flex items-center justify-center mt-16 font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] text-transparent"></div>
+      <div className="datatableTitle w-[100%] mb-10 flex items-center justify-center mt-16 font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] text-transparent">
+      Discover Your Future: Top College picks for your Percentile
+      </div>
       <DataGrid
       className="w-full lg:w-[80%] h-[400px] lg:m-auto mt-5"
         rows={rows}

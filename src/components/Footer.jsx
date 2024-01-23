@@ -1,12 +1,11 @@
 import { Typography } from "@material-tailwind/react";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FiPhone } from "react-icons/fi";
 import { LuMail } from "react-icons/lu";
 import { SlGlobe } from "react-icons/sl";
-import { PiCopyright } from "react-icons/pi";
 import { Tilt } from "react-tilt";
- 
+
 const SITEMAP = [
   {
     title: "Company",
@@ -25,10 +24,10 @@ const SITEMAP = [
     links: ["Templates", "UI Kits", "Icons", "Mockups"],
   },
 ];
- 
+
 const currentYear = new Date().getFullYear();
- 
-const Footer =() => {
+
+const Footer = () => {
   return (
     <footer className="relative w-full">
       <div className="mx-auto w-full max-w-7xl px-8">
@@ -44,7 +43,12 @@ const Footer =() => {
               </Typography>
               <ul className="space-y-1">
                 {links.map((link, key) => (
-                  <Typography key={key} as="li" color="blue-gray" className="font-normal">
+                  <Typography
+                    key={key}
+                    as="li"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
                     <a
                       href="#"
                       className="inline-block py-1 pr-2 transition-transform hover:scale-105"
@@ -62,37 +66,45 @@ const Footer =() => {
             variant="small"
             className="mb-4 text-center font-bold text-blue-gray-900 md:mb-0"
           >
-              <Link to="/">
-            <div className="flex lg:flex-1 items-center">
-            <div className="-m-1.5 p-1">
-              {/* <span className="sr-only">Your Company</span> */}
-              <img
-                className="h-16 w-auto mx-3"
-            src={logo}
-                alt=""
-              />
-               
-            </div>
-            <div  className="py-2 text-md flex items-center gap-1"><PiCopyright/> {currentYear} CollegeCruX . All
-            Rights Reserved.</div>
-            </div>
+            <Link to="/">
+              <div className="flex lg:flex-1 items-center">
+                <div className="-m-1.5 p-1">
+                  {/* <span className="sr-only">Your Company</span> */}
+                  <img className="h-16 w-auto mx-3" src={logo} alt="" />
+                </div>
+                <div className="py-2 text-md flex items-center gap-1">
+                  &copy; {currentYear} CollegeCruX . All Rights Reserved.
+                </div>
+              </div>
             </Link>
           </Typography>
           <div className="flex gap-4 text-black sm:justify-center">
-          <Tilt>
-            <Typography as="a" href="" className="opacity-80 transition-opacity hover:opacity-100">
-             <FiPhone size={20}/>
-            </Typography>
+            <Tilt>
+              <Typography
+                as="a"
+                href=""
+                className="opacity-80 transition-opacity hover:opacity-100"
+              >
+                <FiPhone size={20} />
+              </Typography>
             </Tilt>
             <Tilt>
-            <Typography as="a" href="" className="opacity-80 transition-opacity hover:opacity-100">
-             <LuMail size={20}/>
-            </Typography>
+              <Typography
+                as="a"
+                href=""
+                className="opacity-80 transition-opacity hover:opacity-100"
+              >
+                <LuMail size={20} />
+              </Typography>
             </Tilt>
             <Tilt>
-            <Typography as="a" href="" className="opacity-80 transition-opacity hover:opacity-100">
-            <SlGlobe size={20}/>
-            </Typography>
+              <Typography
+                as="a"
+                href=""
+                className="opacity-80 transition-opacity hover:opacity-100"
+              >
+                <SlGlobe size={20} />
+              </Typography>
             </Tilt>
             {/* <Typography as="a" href="https://github.com/GODCarNageOP/Hackathon-MumbaiHacks.git" className="opacity-80 transition-opacity hover:opacity-100">
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -117,6 +129,6 @@ const Footer =() => {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -6,14 +6,15 @@ import AboutUs from "./pages/AboutUs";
 import TopColleges from "./pages/TopColleges";
 import TopUniversity from "./pages/TopUniversity";
 import Admission from "./pages/Admission";
-import Contact from "./pages/Contact";
 import Even from "./pages/Even";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { DarkModeContext } from "./context/DarkModeContext";
 
 export  const ProtectedRoute = ({ children }) => {
+  const { darkMode } = useContext(DarkModeContext)
   const { currentUser } = useContext(AuthContext);
   if (!currentUser) {
     return <Navigate to="/login" />;
@@ -24,7 +25,7 @@ export  const ProtectedRoute = ({ children }) => {
 function App() {
   const Layout = () => {
     return (
-      <div className=" app">
+      <div>
         <Navbar />
         <Outlet />
         <Footer />
@@ -59,10 +60,6 @@ function App() {
           element: <Admission />,
         },
         {
-          path: "/contact",
-          element: <Contact />,
-        },
-        {
           path: "/even",
           element: <Even />,
         },
@@ -79,7 +76,7 @@ function App() {
   ]);
 
   return (
-    <div className="">
+    <div className={"app"}>
       <RouterProvider router={router} />
     </div>
   );

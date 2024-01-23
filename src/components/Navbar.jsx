@@ -15,7 +15,7 @@ const navigation = [
   { name: "Top University", link: "/topuniversities" },
   { name: "Admission", link: "/admission" },
   // { name: "About", link: "/aboutus" },
-  { name: "Contact", link: "/contact" },
+  { name: "Contact", link: "mailto:1032201286@tcetmumbai.in" },
   // { name: '', href: '#' },
 ];
 
